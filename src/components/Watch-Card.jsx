@@ -1,7 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 import "./Style-watch-card.css";
 
 function WatchCard(props) {
+// const [note, setNote] = useState('')
+
     // Initalize variables from props
     const id = props.id;
     const title = props.title;
@@ -77,6 +79,7 @@ function WatchCard(props) {
         // Invoked whenever the user types anything in the textarea element.
         // Invokes the parent function to update the state of the review value.
         function onEdit(e) {
+            // setNote(e.target.value)
             props.edit(id, e.target.value);
         }
 

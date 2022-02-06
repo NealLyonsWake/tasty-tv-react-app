@@ -1,10 +1,20 @@
 import "./Style-reviews.css";
-import React from "react";
+import React, {useEffect} from "react";
 import ReviewCard from "./Review-Card";
+import handleReviewCall from '../calls/getReviews'
 
 function Reviews(props) {
 
+  useEffect(() => {
+    
+    updateReviews()
+  }, [])
 
+  const updateReviews = async () => {
+    const response = await handleReviewCall()
+    console.log('reviews')
+    props.updateReviews(response)
+  }
 
   const reviews = props.postedReviews;
 

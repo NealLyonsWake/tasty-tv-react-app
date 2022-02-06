@@ -1,49 +1,22 @@
 import "./Style-watch-list.css";
-import React, {useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import WatchCard from "./Watch-Card";
+import handleWatchCall from '../calls/getWatchList'
 
 function WatchList(props) {
+  useEffect(() => {
+    updateWatchList()
+  }, [])
 
-  useEffect(()=>{
-    console.log("HEY")
-    handleWatchCall()
-  },[])
+  const updateWatchList = async () => {
+    const response = await handleWatchCall(props.loggedIn)
+    props.updateWatchList(response)
 
-  const handleWatchCall = async () => {
+  }
 
-    if (props.loggedIn) {
-        const endpoint = "http://localhost:4000/watch/requestwatchlist"
-
-        const requestOptions = {
-            method: 'GET',
-            credentials: 'include',
-            headers: {
-                Accept: '*/*',
-                'Content-Type': 'application/json'
-            }
-        };
-
-        try {
-            const res = await fetch(endpoint, requestOptions)
-            const response = await res.json()
-            console.log(response)
-            props.updateWatchList(response)
-            
-        }
-
-        catch (e) {
-            console.log(e, "Error connecting to server")
-        }
-    }
-    else {
-      props.updateWatchList([])
-    }
-}
-
-
-  
   // Initialize the watchlist prop variable
   const watchCards = props.toWatch;
+
 
   // Called when the user clicks on "remove watched" button.
   // Invokes the parent function to filter out any returned true watched values.
@@ -53,26 +26,26 @@ function WatchList(props) {
     const endpoint = "http://localhost:4000/watch/requestremovewatched"
 
     const requestOptions = {
-        method: 'DELETE',
-        credentials: 'include',
-        headers: {
-            Accept: '*/*',
-            'Content-Type': 'application/json'
-        }
+      method: 'DELETE',
+      credentials: 'include',
+      headers: {
+        Accept: '*/*',
+        'Content-Type': 'application/json'
+      }
     };
 
     try {
-        const res = await fetch(`${endpoint}`, requestOptions)
-        const response = await res.json()
-        console.log(response, "Hey")
-        // handleLogin(response.loggedIn, response.user)
+      const res = await fetch(`${endpoint}`, requestOptions)
+      const response = await res.json()
+      console.log(response, "Hey")
+      // handleLogin(response.loggedIn, response.user)
     }
 
     catch (e) {
-        console.log(e, "Error connecting to server")
+      console.log(e, "Error connecting to server")
     }
   }
-  
+
 
   // Called when the user clicks on "remove all" button.
   // Invokes the parent function to reset the state of watchlist back to default.
@@ -82,35 +55,36 @@ function WatchList(props) {
     const endpoint = "http://localhost:4000/watch/requestdeleteall"
 
     const requestOptions = {
-        method: 'DELETE',
-        credentials: 'include',
-        headers: {
-            Accept: '*/*',
-            'Content-Type': 'application/json'
-        }
+      method: 'DELETE',
+      credentials: 'include',
+      headers: {
+        Accept: '*/*',
+        'Content-Type': 'application/json'
+      }
     };
 
     try {
-        const res = await fetch(`${endpoint}`, requestOptions)
-        const response = await res.json()
-        console.log(response, "Hey")
-        // handleLogin(response.loggedIn, response.user)
+      const res = await fetch(`${endpoint}`, requestOptions)
+      const response = await res.json()
+      console.log(response, "Hey")
+      // handleLogin(response.loggedIn, response.user)
     }
 
     catch (e) {
-        console.log(e, "Error connecting to server")
+      console.log(e, "Error connecting to server")
     }
   }
 
   function checkList() {
-    if (watchCards.length < 1 && watchCards.banner === undefined && props.loggedIn) {
+    if (watchCards.length < 1 && watchCards.poster === undefined && props.loggedIn) {
+
       return (
         <div>
           <h1 className="empty">It's empty!<br /> Add some tasty randoms to your watch list.</h1>
         </div>
       );
     }
-    else if(!props.loggedIn){
+    else if (!props.loggedIn) {
       return (
         <div>
           <h1 className="empty">Oops!</h1>

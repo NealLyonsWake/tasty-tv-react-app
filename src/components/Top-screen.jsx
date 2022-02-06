@@ -7,87 +7,49 @@ import AccountTop from './Account-Top';
 import "./Style-top-screen.css";
 import { Link } from "react-router-dom";
 import { useLocation, Routes, Route } from "react-router-dom";
+import checkLogin from '../calls/getCheckLogin';
+import handleHeading from '../supportFunctions/handleHeading';
 
 
 function TopScreen() {
     // Set up the top-level states for the front end application.
-    // const [heading, setHeading] = useState('Tasty Randoms')
     const [watchList, setWatchList] = useState([])
     const [postedReviews, setPostedReviews] = useState([])
     const [loggedIn, setLoggedIn] = useState(false)
     const [user, setUser] = useState('')
 
     const location = useLocation()
-    console.log(location.pathname)
 
     useEffect(() => {
         // Start routinely checking the user's login status to maintain appropriate user access.
-        checkLogin()           
-    })
-    
-    function handleHeading() {
-        // Set the heading 
-        if(location.pathname === '/tastyrandoms' || location.pathname === '/'){
-            return user ? <h2 className='heading'>{`Hey ${user}, your Tasty Randoms`}</h2> 
-            : <h2 className='heading'>Tasty Randoms</h2>                       
-        }
-        else if(location.pathname === '/watchlist' ){
-            return user ? <h2 className='heading'>{`Hey ${user}, your Watch List`}</h2> 
-            : <h2 className='heading'>Watch List</h2> 
-        }
-        else if(location.pathname === '/reviews' ){
-            return user ? <h2 className='heading'>{`Hey ${user}, your Reviews`}</h2> 
-            : <h2 className='heading'>Reviews</h2> 
+        confirmLogin()
+    },[])
+
+    const confirmLogin = async () =>{
+        const data = await checkLogin()
+        if (data.loggedIn){
+            setLoggedIn(data.loggedIn)
+            setUser(data.user)
         }
         else {
-            return user ? <h2 className='heading'>{`Hey ${user}, your Account`}</h2> 
-            : <h2 className='heading'>Account</h2> 
+            setLoggedIn(false)
+            setUser(data.user)
+            setWatchList(data.watchList)
         }
-        
-               // If the heading is "Watch List" then call the watch list API.
-        // if (e.target.value === "Watch List") { handleWatchCall() }
-
-        // Reviews API call like as above.
-        // if (e.target.value === "Reviews") { handleReviewCall() }
+        setTimeout(() => {
+            confirmLogin()
+        }, 1000)
+        // console.log(data)
     }
 
-    const updateWatchList = (list) =>{
+
+    const updateWatchList = (list) => {
         setWatchList(list)
     }
-    
 
-    const handleReviewCall = async () => {
-
-        if (loggedIn) {
-            const endpoint = "http://localhost:4000/review/requestreviews"
-
-            const requestOptions = {
-                method: 'GET',
-                credentials: 'include',
-                headers: {
-                    Accept: '*/*',
-                    'Content-Type': 'application/json'
-                }
-            };
-
-            try {
-                const res = await fetch(endpoint, requestOptions)
-                const response = await res.json()
-                console.log(response, "Hey")
-                setPostedReviews(response)
-                // handleLogin(response.loggedIn, response.user)
-            }
-
-            catch (e) {
-                console.log(e, "Error connecting to server")
-            }
-
-        }
-        else {
-            setPostedReviews([])
-        }
+    const updateReviews = (reviews) => {
+        setPostedReviews(reviews)
     }
-
 
     const commentEdit = (_id, e) => {
         const editComment = postedReviews.map((review) => {
@@ -99,13 +61,10 @@ function TopScreen() {
         setPostedReviews(editComment);
     }
 
-
-
     function handleLogin(loggedIn, user) {
         setLoggedIn(loggedIn)
         setUser(user)
     }
-
 
     // Managing watch list movies (toggle watched)
     const handleWatched = (movId, watched) => {
@@ -216,37 +175,7 @@ function TopScreen() {
         }
 
     }
-
-    const checkLogin = async () => {
-
-        const requestOption = {
-            method: 'GET',
-            credentials: 'include'
-        }
-
-        try {
-            await fetch('http://localhost:4000/account/welcome', requestOption).then(async (res) => {
-                const response = await res.json()
-                setLoggedIn(response.loggedIn)
-                if (response.loggedIn) {
-                    if (user === '') {
-                        setUser(response.user)
-                        setTimeout(() => {
-                            checkLogin()
-                        }, 1000)
-                    }
-                }
-                else if (!response.loggedIn && user !== "") {
-                    setUser('')
-                    setWatchList([])
-                }
-            })
-        }
-        catch (err) {
-            console.log('Error', err)
-        }
-        console.log(loggedIn)
-    }
+   
 
 
     return (
@@ -271,7 +200,7 @@ function TopScreen() {
                     </Link>
                 </nav>
 
-                {handleHeading()}
+                {handleHeading(location, user)}
             </header>
             {/* {returnComponent()} */}
             <Routes>
@@ -297,18 +226,21 @@ function TopScreen() {
                             reviews={postedReviews}
                             loggedIn={loggedIn}
                             user={user}
-                            updateWatchList={updateWatchList} />
+                            updateWatchList={updateWatchList}
+                        />
                     }
 
                 />
                 <Route
                     path="/reviews"
-                    element={<Reviews postedReviews={postedReviews} loggedIn={loggedIn} user={user} commentEdit={commentEdit} />}
+                    element={<Reviews postedReviews={postedReviews} loggedIn={loggedIn} user={user} commentEdit={commentEdit} updateReviews={updateReviews} />}
 
                 />
                 <Route
                     path="/account"
-                    element={<AccountTop handleLogin={handleLogin} loggedIn={loggedIn} user={user} />}
+                    element={<AccountTop
+                        handleLogin={handleLogin}
+                        loggedIn={loggedIn} user={user} />}
 
                 />
             </Routes>
