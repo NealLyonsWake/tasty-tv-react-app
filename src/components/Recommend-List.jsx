@@ -8,7 +8,7 @@ function RecommendList(props) {
 
     const requestOption = {
         method: 'GET',
-        credentials: 'include'
+        credentials: include
     }
 
     useEffect(() => {
