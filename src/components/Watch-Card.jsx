@@ -16,7 +16,7 @@ function WatchCard(props) {
         const handleToggle = async () => {
             props.toggleWatched(id, watched);
 
-            const endpoint = "http://localhost:4000/watch/requestcheckwatched/"
+            const endpoint = "https://tasty-tv-api.herokuapp.com/watch/requestcheckwatched/"
 
             const requestOptions = {
                 method: 'PATCH',
@@ -50,7 +50,7 @@ function WatchCard(props) {
         const deleteSingleMov = async () => {
             props.deleteSingleMov(id);
 
-            const endpoint = "http://localhost:4000/watch/requestdeletesingle/"
+            const endpoint = "https://tasty-tv-api.herokuapp.com/watch/requestdeletesingle/"
 
             const requestOptions = {
                 method: 'DELETE',
@@ -88,7 +88,7 @@ function WatchCard(props) {
 
             if (review !== "") {
 
-                const endpoint = "http://localhost:4000/review/requestreview"
+                const endpoint = "https://tasty-tv-api.herokuapp.com/review/requestreview"
 
                 const requestOptions = {
                     method: 'POST',

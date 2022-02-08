@@ -22,7 +22,7 @@ function AccountSignIn(props) {
 
     const login = async (e) => {
 
-        const endpoint = "http://localhost:4000/account/login"
+        const endpoint = "https://tasty-tv-api.herokuapp.com/account/login"
 
         e.preventDefault()
 

@@ -4,7 +4,7 @@ const handleReviewCall = async () => {
     const loggedIn = sessionStorage.getItem('loggedIn');
 
     if (loggedIn) {
-        const endpoint = "http://localhost:4000/review/requestreviews"
+        const endpoint = "https://tasty-tv-api.herokuapp.com/review/requestreviews"
         const requestOptions = {
             method: 'GET',
             credentials: 'include',

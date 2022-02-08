@@ -14,7 +14,7 @@ function ReviewCard(props) {
   const review = props.review;
 
   const retrieveComments = async () => {
-    const endpoint = "http://localhost:4000/comment/requestretrievecomments/"
+    const endpoint = "https://tasty-tv-api.herokuapp.com/comment/requestretrievecomments/"
 
     const requestOptions = {
       method: 'GET',
@@ -50,7 +50,7 @@ function ReviewCard(props) {
 
     if(props.comment.length){
 
-    const endpoint = "http://localhost:4000/comment/requestcomment"
+    const endpoint = "https://tasty-tv-api.herokuapp.com/comment/requestcomment"
 
     const requestOptions = {
       method: 'POST',

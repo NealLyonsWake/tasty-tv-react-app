@@ -3,7 +3,7 @@ const handleWatchCall = async () => {
     const loggedIn = sessionStorage.getItem('loggedIn');
 
     if (loggedIn) {
-        const endpoint = "http://localhost:4000/watch/requestwatchlist"
+        const endpoint = "https://tasty-tv-api.herokuapp.com/watch/requestwatchlist"
         const requestOptions = {
             method: 'GET',
             credentials: 'include',

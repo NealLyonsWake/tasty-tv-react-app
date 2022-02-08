@@ -23,7 +23,7 @@ function WatchList(props) {
   const removeWatched = async () => {
     props.removeWatched();
 
-    const endpoint = "http://localhost:4000/watch/requestremovewatched"
+    const endpoint = "https://tasty-tv-api.herokuapp.com/watch/requestremovewatched"
 
     const requestOptions = {
       method: 'DELETE',
@@ -52,7 +52,7 @@ function WatchList(props) {
   const removeAll = async () => {
     props.removeAll();
 
-    const endpoint = "http://localhost:4000/watch/requestdeleteall"
+    const endpoint = "https://tasty-tv-api.herokuapp.com/watch/requestdeleteall"
 
     const requestOptions = {
       method: 'DELETE',
