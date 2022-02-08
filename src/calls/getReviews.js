@@ -1,5 +1,5 @@
 const handleReviewCall = async () => {
-    console.log('reviews call')
+    
 
     const loggedIn = sessionStorage.getItem('loggedIn');
 
@@ -16,7 +16,6 @@ const handleReviewCall = async () => {
         try {
             const res = await fetch(endpoint, requestOptions)
             const response = await res.json()
-            console.log(response)
             return response            
         }
         catch (e) {
@@ -24,7 +23,6 @@ const handleReviewCall = async () => {
         }
     }
     else {
-        console.log('Oh no!')
         return []
     }
 }

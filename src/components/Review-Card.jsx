@@ -67,8 +67,9 @@ function ReviewCard(props) {
     try {
       const res = await fetch(endpoint, requestOptions)
       const response = await res.json()
-      alert(response.message)
       setValidateComment('')
+      alert(response.message)
+      
     }
 
     catch (e) {
@@ -109,8 +110,8 @@ function ReviewCard(props) {
           </div>
         );
       })}<p>{validateComment}</p>
-      <form onSubmit={handleClickAddComment}>
-        <textarea onChange={onEdit} name={props._id} value={props.comment} minLength='1' placeholder="Write a comment..."></textarea>
+      <form  onSubmit={handleClickAddComment}>
+        <textarea className="comment-form" onChange={onEdit} name={props._id} value={props.comment} minLength='1' placeholder="Write a comment..."></textarea>
         <button className="commentButton" >Comment</button>
       </form>
     </div>

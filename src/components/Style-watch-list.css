@@ -13,9 +13,11 @@
   
   .cardContainer {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 0px 100px;
+    flex-direction: column;
+    
+    /* justify-content: center; */
+    align-items: center;
+    /* margin: 0px 20%; */
   }
   
   .empty {

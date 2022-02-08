@@ -80,7 +80,8 @@ function WatchList(props) {
 
       return (
         <div>
-          <h1 className="empty">It's empty!<br /> Add some tasty randoms to your watch list.</h1>
+          <h1 className="empty">It's empty!</h1>
+          <p>Add some tasty randoms to your watch list.</p>
         </div>
       );
     }

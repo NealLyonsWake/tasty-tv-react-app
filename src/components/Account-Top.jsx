@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import AccountRegister from './Account-Register'
 import AccountSignIn from './Account-Sign-In'
 import AccountProfile from './Account-Profile'
+import "./Style-account.css";
 
 function AccountTop(props) {
     const [subHeading, setSubHeading] = useState('Sign in')
@@ -25,7 +26,7 @@ function AccountTop(props) {
 
         if (!props.loggedIn) {
             return (
-                <div>
+                <div className="account-space">
                     <h3>{subHeading}</h3>
                     {
                      subHeading === 'Sign up to enjoy!' ?

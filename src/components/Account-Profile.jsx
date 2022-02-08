@@ -25,10 +25,10 @@ function AccountProfile(props) {
 
 
 return (
-    <div>
+    <div className='account-space'>
         <h3>{`Hello ${props.user}`}</h3>
         <p>Logged In</p>
-        <button onClick={signOut}>Sign out</button>
+        <button className="account-button" onClick={signOut}>Sign out</button>
     </div>
 )
 }

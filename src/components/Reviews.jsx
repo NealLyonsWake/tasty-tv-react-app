@@ -5,14 +5,12 @@ import handleReviewCall from '../calls/getReviews'
 
 function Reviews(props) {
 
-  useEffect(() => {
-    
+  useEffect(() => {    
     updateReviews()
   }, [])
 
   const updateReviews = async () => {
     const response = await handleReviewCall()
-    console.log('reviews')
     props.updateReviews(response)
   }
 
@@ -21,7 +19,7 @@ function Reviews(props) {
   if (reviews.length < 1 && reviews.poster === undefined && props.loggedIn) {
     return (
       <div className="emptyReview">
-        <h1 className="emptyTitle">Oops, there's no review!</h1>
+        <h1 className="emptyTitle">There are no reviews!</h1>
         <p>Add a movie to your watch list and post a review.</p>
       </div>
     );}

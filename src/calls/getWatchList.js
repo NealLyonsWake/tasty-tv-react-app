@@ -22,7 +22,6 @@ const handleWatchCall = async () => {
         }
     }
     else {
-        console.log('Oh no!')
         return []
     }
 }

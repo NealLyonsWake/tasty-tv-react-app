@@ -17,9 +17,7 @@ function RecommendedCard(props) {
 
         const endpoint = "http://localhost:4000/watch/requestmovie"
 
-        console.log(props.user)
-
-        const requestOptions = {
+           const requestOptions = {
             method: 'POST',
             credentials: 'include',
             headers: {

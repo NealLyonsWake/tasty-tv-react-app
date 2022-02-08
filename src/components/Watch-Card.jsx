@@ -1,9 +1,7 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "./Style-watch-card.css";
 
 function WatchCard(props) {
-// const [note, setNote] = useState('')
-
     // Initalize variables from props
     const id = props.id;
     const title = props.title;
@@ -88,39 +86,41 @@ function WatchCard(props) {
         const onPost = async () => {
             props.post(id, review, posted, title, poster);
 
-            const endpoint = "http://localhost:4000/review/requestreview"
+            if (review !== "") {
 
-            const requestOptions = {
-                method: 'POST',
-                credentials: 'include',
-                headers: {
-                    Accept: '*/*',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    author: props.user,
-                    id: props.id,
-                    name: props.title,
-                    poster: props.poster,
-                    watched: props.watched,
-                    review: props.review,
-                    posted: props.posted,
-                    comment: ''
-                })
-            };
-            try {
-                const res = await fetch(endpoint, requestOptions)
-                const response = await res.json()
-                console.log(response.message, "Aight!")
-                // handleLogin(response.loggedIn, response.user)
-            }
-    
-            catch (e) {
-                console.log(e, "Error connecting to server")
+                const endpoint = "http://localhost:4000/review/requestreview"
+
+                const requestOptions = {
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: {
+                        Accept: '*/*',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        author: props.user,
+                        id: props.id,
+                        name: props.title,
+                        poster: props.poster,
+                        watched: props.watched,
+                        review: props.review,
+                        posted: props.posted,
+                        comment: ''
+                    })
+                };
+                try {
+                    const res = await fetch(endpoint, requestOptions)
+                    const response = await res.json()
+                    
+                }
+
+                catch (e) {
+                    console.log(e, "Error connecting to server")
+                }
             }
         }
 
-        
+
 
         // Checks if the textarea should be enabled or disabled on loadup.
         // If a review has been posted for a particular movie the textarea would be disabled on load up.

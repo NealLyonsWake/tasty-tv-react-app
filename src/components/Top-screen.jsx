@@ -23,11 +23,11 @@ function TopScreen() {
     useEffect(() => {
         // Start routinely checking the user's login status to maintain appropriate user access.
         confirmLogin()
-    },[])
+    }, [])
 
-    const confirmLogin = async () =>{
+    const confirmLogin = async () => {
         const data = await checkLogin()
-        if (data.loggedIn){
+        if (data.loggedIn) {
             setLoggedIn(data.loggedIn)
             setUser(data.user)
         }
@@ -81,7 +81,7 @@ function TopScreen() {
     // Managing watch list movies (delete all watched movies)
     const removeWatched = () => {
         if (watchList.length === 0) {
-            window.alert("No tasks to remove");
+            alert("No movies to remove!");
             return;
         }
 
@@ -175,17 +175,16 @@ function TopScreen() {
         }
 
     }
-   
+
 
 
     return (
         <div>
             <header>
+                <div>
+                    <img className="logo" src={Logo} alt="Tasty TV logo" />
+                </div>
                 <nav>
-
-                    <div>
-                        <img className="logo" src={Logo} alt="Tasty TV logo" />
-                    </div>
                     <Link to="/tastyrandoms">
                         <button className="navButton" value="Tasty Randoms" >Randoms</button>
                     </Link>

@@ -1,49 +1,32 @@
 .watchCard {
-    display: grid;
-    grid-template:
-      "head head head" 30%
-      "banner review review" 40%
-      "banner buttons buttons" 30% /
-      40% 40% 20%;
     padding: 10px;
     margin: 2px 2px;
-    text-align: left;
+    text-align: center;
     border: 3px solid #0c1727ff;
-    min-width: 600px;
+    width: 310px;
   }
   
   .head {
-    grid-area: head;
-    text-align: left;
+      text-align: center;
   }
-  
-  .banner {
-    grid-area: banner;
-  }
-  
+    
   .banner img {
     width: 80%;
   }
-  
-  .review {
-    grid-area: review;
-  }
-  
+    
   .review label textarea {
-    display: block;
     resize: none;
-    width: 90%;
-    height: 70%;
+    width: 95%;
+    height: 100px;
     font: 14px "Open Sans", "Segoe UI", "Tahoma";
     padding: 5px;
   }
-  
-  .watched {
-    grid-area: watched;
-  }
-  
+
+.review{
+  text-align: center;
+}
+     
   .buttons {
-    grid-area: buttons;
     margin: 10px;
   }
   
@@ -58,9 +41,8 @@
   
   .editButton {
     position: relative;
-    left: 295px;
+    left: 128px;
     bottom: 40px;
-  
     padding: 5px;
     border-radius: 10px;
     border: none;

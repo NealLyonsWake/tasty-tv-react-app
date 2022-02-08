@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function AccountSignIn(props) {
+    const [status, setStatus] = useState('')
 
     function handleChange(e) {
         props.event(e)
@@ -40,8 +41,13 @@ function AccountSignIn(props) {
         try {
             const res = await fetch(endpoint, requestOptions)
             const response = await res.json()
-            console.log(response, "HELLO")
             handleLogin(response.loggedIn, response.user)
+            if(!response.loggenIn){
+                setStatus(response.message)
+            }
+            else{
+                setStatus('')
+            }
         }
 
         catch (e) {
@@ -54,21 +60,27 @@ function AccountSignIn(props) {
 
 
     return (
-        <div>
+        <div >
 
             <p>Welcome back.</p>
 
+            <p><em><b>{status}</b></em></p>
+
             <form name="Welcome" onSubmit={login}>
-                <label for="username">Username:</label>
-                <input type="textbox" name="username" onChange={handleChange} value={props.un}/>
+                <div className="account-form-section">
+                    <label for="username">Username:</label>
+                    <input className="account-input" type="textbox" name="username" onChange={handleChange} value={props.un} />
+                </div>
+                <div className="account-form-section">
+                    <label for="password">Password:</label>
+                    <input className="account-input" type="password" name="password" onChange={handleChange} value={props.pw} />
+                </div>
+                <button className="account-button">Sign In</button>
 
-                <label for="password">Password:</label>
-                <input type="password" name="password" onChange={handleChange} value={props.pw} />
-
-                <input type="submit" value="Sign In" />
+                {/* <input type="submit" value="Sign In" /> */}
             </form>
 
-            <p>Not registered?, <a href="/register" onClick={subHeadingChange} name="Sign up to enjoy!">Sign up</a></p>
+            <h4>Not registered?, <a href="/register" onClick={subHeadingChange} name="Sign up to enjoy!">Sign up</a></h4>
         </div>
     )
 }
