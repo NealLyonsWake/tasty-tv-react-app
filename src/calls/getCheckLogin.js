@@ -34,9 +34,12 @@ const checkLogin = async (token, user) => {
 
 
         const cookieCheck = () => {
+
+            let data = {}
+            
             if (cookies.token) {
 
-                let data = {}
+                
 
                 // Save data to sessionStorage
                 sessionStorage.setItem('loggedIn', true);
