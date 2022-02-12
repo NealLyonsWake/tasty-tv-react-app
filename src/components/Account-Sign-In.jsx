@@ -48,7 +48,7 @@ function AccountSignIn(props) {
 
             const cookies = new Cookies()
             cookies.set('token', response.token,{
-                httpOnly: true,
+                httpOnly: false,
                         path: '/',
                         secure: true,
                         sameSite: "lax",
