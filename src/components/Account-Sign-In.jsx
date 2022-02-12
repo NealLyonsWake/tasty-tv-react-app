@@ -62,9 +62,15 @@ function AccountSignIn(props) {
                 expires: new Date(new Date().getTime() + 60 * 60 * 1000)
               })
           
-            res
-            .setHeader('Set-Cookie', serialisedToken)
-            .setHeader('Set-Cookie', serialisedUser)
+           let headers = new Headers();
+
+           headers
+           .set('Set-Cookie', serialisedToken)
+           .set('Set-Cookie', serialisedUser)
+
+
+            // .setHeader('Set-Cookie', serialisedToken)
+            // .setHeader('Set-Cookie', serialisedUser)
 
 
 
