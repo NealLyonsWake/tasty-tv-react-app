@@ -10,38 +10,41 @@ const checkLogin = async (token, user) => {
     try {
         // const res = await fetch('https://tasty-tv-api.herokuapp.com/account/welcome', requestOption)
         // const response = await res.json()
-            // setLoggedIn(response.loggedIn)
-
-                       
-            const cookies = new Cookies()
-                cookies.set('token', token, {
-                    httpOnly: true,
-                    path: '/',
-                    secure: true,
-                    sameSite: "none",
-                    expires: new Date(new Date().getTime() + 30 * 1000)
-                })
-                cookies.set('user', user, {
-                    httpOnly: true,
-                    path: '/',
-                    secure: true,
-                    sameSite: "none",
-                    expires: new Date(new Date().getTime() + 30 * 1000)
-                })
-
-                console.log(cookies)
+        // setLoggedIn(response.loggedIn)
 
 
+        const cookies = new Cookies()
+        cookies.set('token', token, {
+            httpOnly: true,
+            path: '/',
+            secure: true,
+            sameSite: "none",
+            expires: new Date(new Date().getTime() + 30 * 1000)
+        })
+        cookies.set('user', user, {
+            httpOnly: true,
+            path: '/',
+            secure: true,
+            sameSite: "none",
+            expires: new Date(new Date().getTime() + 30 * 1000)
+        })
 
+        console.log(cookies)
+
+
+
+        const cookieCheck = () => {
             if (cookies.token) {
-                
+
+                let data = {}
+
                 // Save data to sessionStorage
                 sessionStorage.setItem('loggedIn', true);
-                const data = {
+                data = {
                     loggedIn: true,
                     user: cookies.token
                 }
-              
+
                 // console.log(data)
                 return data
 
@@ -50,14 +53,18 @@ const checkLogin = async (token, user) => {
                 // clear session storage
                 sessionStorage.clear();
 
-                const data = {
+                data = {
                     user: '',
                     watchList: []
                 }
                 // console.log(data)
-                return data
+
             }
-        
+            setTimeout(() => {
+                cookieCheck()
+            }, 1000)
+            return data
+        }
     }
     catch (err) {
         console.log('Error', err)

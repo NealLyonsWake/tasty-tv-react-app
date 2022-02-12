@@ -51,23 +51,23 @@ function AccountSignIn(props) {
                 setStatus(response.message)
             }
             else {
-                const cookies = new Cookies()
-                cookies.set('token', response.token, {
-                    httpOnly: true,
-                    path: '/',
-                    secure: true,
-                    sameSite: "none",
-                    expires: new Date(new Date().getTime() + 30 * 1000)
-                })
-                cookies.set('user', response.user.username, {
-                    httpOnly: true,
-                    path: '/',
-                    secure: true,
-                    sameSite: "none",
-                    expires: new Date(new Date().getTime() + 30 * 1000)
-                })
+                // const cookies = new Cookies()
+                // cookies.set('token', response.token, {
+                //     httpOnly: true,
+                //     path: '/',
+                //     secure: true,
+                //     sameSite: "none",
+                //     expires: new Date(new Date().getTime() + 30 * 1000)
+                // })
+                // cookies.set('user', response.user.username, {
+                //     httpOnly: true,
+                //     path: '/',
+                //     secure: true,
+                //     sameSite: "none",
+                //     expires: new Date(new Date().getTime() + 30 * 1000)
+                // })
 
-                console.log(cookies)
+                // console.log(cookies)
            
                 setStatus('')
 
