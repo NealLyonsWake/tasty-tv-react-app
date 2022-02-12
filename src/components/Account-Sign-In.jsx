@@ -48,11 +48,11 @@ function AccountSignIn(props) {
 
             const cookies = new Cookies()
             cookies.set('token', response.token,{
-                httpOnly: false,
+                httpOnly: true,
                         path: '/',
                         secure: true,
-                        sameSite: "lax",
-                        expires: new Date(new Date().getTime() + 10 * 1000)
+                        sameSite: "none",
+                        expires: new Date(new Date().getTime() + 20 * 1000)
             })
 
         //              const serialisedToken = serialize('token', response.token,
