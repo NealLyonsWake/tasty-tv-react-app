@@ -39,7 +39,7 @@ const checkLogin = async (token, user) => {
                 sessionStorage.setItem('loggedIn', true);
                 const data = {
                     loggedIn: true,
-                    user: cookie.token
+                    user: cookies.token
                 }
               
                 // console.log(data)
