@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+const { serialize } = require('cookie')
 
 function AccountSignIn(props) {
     const [status, setStatus] = useState('')
@@ -42,6 +43,33 @@ function AccountSignIn(props) {
             const res = await fetch(endpoint, requestOptions)
             const response = await res.json()
             console.log(response)
+
+                     const serialisedToken = serialize('token', response.token,
+              {
+                httpOnly: true,
+                path: '/',
+                secure: true,
+                sameSite: "lax",
+                expires: new Date(new Date().getTime() + 60 * 60 * 1000)
+              })
+
+              const serialisedUser = serialize('user', response.user.username,
+              {
+                httpOnly: true,
+                path: '/',
+                secure: true,
+                sameSite: "lax",
+                expires: new Date(new Date().getTime() + 60 * 60 * 1000)
+              })
+          
+            res
+            .setHeader('Set-Cookie', serialisedToken)
+            .setHeader('Set-Cookie', serialisedUser)
+
+
+
+
+
             // handleLogin(response.loggedIn, response.user)
             // if(!response.loggenIn){
             //     setStatus(response.message)
