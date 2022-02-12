@@ -47,7 +47,9 @@ function AccountSignIn(props) {
             // console.log(response)
 
 
-
+            if(!response.token){
+                setStatus(response.message)
+            
             const cookies = new Cookies()
             cookies.set('token', response.token, {
                 httpOnly: true,
@@ -66,46 +68,13 @@ function AccountSignIn(props) {
 
             console.log(cookies)
            
+            
 
-
-            //              const serialisedToken = serialize('token', response.token,
-            //       {
-            //         httpOnly: true,
-            //         path: '/',
-            //         secure: true,
-            //         sameSite: "lax",
-            //         expires: new Date(new Date().getTime() + 60 * 60 * 1000)
-            //       })
-
-            //       const serialisedUser = serialize('user', response.user.username,
-            //       {
-            //         httpOnly: true,
-            //         path: '/',
-            //         secure: true,
-            //         sameSite: "lax",
-            //         expires: new Date(new Date().getTime() + 60 * 60 * 1000)
-            //       })
-
-            //    let headers = new Headers();
-
-            //    headers.set('Set-Cookie', serialisedToken)
-            //    .set('Set-Cookie', serialisedUser)
-
-
-            // .setHeader('Set-Cookie', serialisedToken)
-            // .setHeader('Set-Cookie', serialisedUser)
-
-
-
-
-
-            // handleLogin(response.loggedIn, response.user)
-            // if(!response.loggenIn){
-            //     setStatus(response.message)
-            // }
-            // else{
-            //     setStatus('')
-            // }
+        }
+            else{
+                setStatus('')
+            }
+            handleLogin(response.token? true:false, response.user.username)
         }
 
         catch (e) {
