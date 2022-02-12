@@ -36,10 +36,8 @@ const checkLogin = async (token, user) => {
         const cookieCheck = () => {
 
             let data = {}
-            
-            if (cookies.token) {
 
-                
+            if (cookies.token) {                
 
                 // Save data to sessionStorage
                 sessionStorage.setItem('loggedIn', true);
@@ -66,6 +64,7 @@ const checkLogin = async (token, user) => {
             setTimeout(() => {
                 cookieCheck()
             }, 1000)
+            console.log(data)
             return data
         }
     }
