@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-const { serialize } = require('cookie')
+import Cookies from 'universal-cookie'
+// const { serialize } = require('cookie')
+
 
 function AccountSignIn(props) {
     const [status, setStatus] = useState('')
@@ -44,27 +46,36 @@ function AccountSignIn(props) {
             const response = await res.json()
             console.log(response)
 
-                     const serialisedToken = serialize('token', response.token,
-              {
+            const cookies = new Cookies()
+            Cookies.set('token', response.token,{
                 httpOnly: true,
-                path: '/',
-                secure: true,
-                sameSite: "lax",
-                expires: new Date(new Date().getTime() + 60 * 60 * 1000)
-              })
+                        path: '/',
+                        secure: true,
+                        sameSite: "lax",
+                        expires: new Date(new Date().getTime() + 10 * 1000)
+            })
 
-              const serialisedUser = serialize('user', response.user.username,
-              {
-                httpOnly: true,
-                path: '/',
-                secure: true,
-                sameSite: "lax",
-                expires: new Date(new Date().getTime() + 60 * 60 * 1000)
-              })
+        //              const serialisedToken = serialize('token', response.token,
+        //       {
+        //         httpOnly: true,
+        //         path: '/',
+        //         secure: true,
+        //         sameSite: "lax",
+        //         expires: new Date(new Date().getTime() + 60 * 60 * 1000)
+        //       })
+
+        //       const serialisedUser = serialize('user', response.user.username,
+        //       {
+        //         httpOnly: true,
+        //         path: '/',
+        //         secure: true,
+        //         sameSite: "lax",
+        //         expires: new Date(new Date().getTime() + 60 * 60 * 1000)
+        //       })
           
-           let headers = new Headers();
+        //    let headers = new Headers();
 
-           headers.set('Set-Cookie', serialisedToken)
+        //    headers.set('Set-Cookie', serialisedToken)
         //    .set('Set-Cookie', serialisedUser)
 
 
