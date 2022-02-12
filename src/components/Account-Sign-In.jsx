@@ -47,38 +47,35 @@ function AccountSignIn(props) {
             // console.log(response)
 
 
-            if(!response.token){
+            if (!response.token) {
                 setStatus(response.message)
-            
-            const cookies = new Cookies()
-            cookies.set('token', response.token, {
-                httpOnly: true,
-                path: '/',
-                secure: true,
-                sameSite: "none",
-                expires: new Date(new Date().getTime() + 30 * 1000)
-            })
-            cookies.set('user', response.user.username, {
-                httpOnly: true,
-                path: '/',
-                secure: true,
-                sameSite: "none",
-                expires: new Date(new Date().getTime() + 30 * 1000)
-            })
+            }
+            else {
+                const cookies = new Cookies()
+                cookies.set('token', response.token, {
+                    httpOnly: true,
+                    path: '/',
+                    secure: true,
+                    sameSite: "none",
+                    expires: new Date(new Date().getTime() + 30 * 1000)
+                })
+                cookies.set('user', response.user.username, {
+                    httpOnly: true,
+                    path: '/',
+                    secure: true,
+                    sameSite: "none",
+                    expires: new Date(new Date().getTime() + 30 * 1000)
+                })
 
-            console.log(cookies)
+                console.log(cookies)
            
-            
-
-        }
-            else{
                 setStatus('')
             }
-            handleLogin(response.token? true:false, response.user.username)
+            handleLogin(response.token ? true : false, response.user.username)
         }
 
         catch (e) {
-            console.log(e, "Error connecting to server")
+            console.log(e)
         }
         resetCredentials()
     }
