@@ -55,6 +55,9 @@ function AccountSignIn(props) {
                         expires: new Date(new Date().getTime() + 20 * 1000)
             })
 
+            console.log(cookies)
+
+
         //              const serialisedToken = serialize('token', response.token,
         //       {
         //         httpOnly: true,
