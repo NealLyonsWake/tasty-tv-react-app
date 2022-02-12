@@ -19,14 +19,14 @@ const checkLogin = async (token, user) => {
             path: '/',
             secure: true,
             sameSite: "none",
-            expires: new Date(new Date().getTime() + 30 * 1000)
+            expires: new Date(new Date().getTime() + 60 * 1000)
         })
         cookies.set('user', user, {
             httpOnly: true,
             path: '/',
             secure: true,
             sameSite: "none",
-            expires: new Date(new Date().getTime() + 30 * 1000)
+            expires: new Date(new Date().getTime() + 60 * 1000)
         })
 
         console.log(cookies)
