@@ -41,13 +41,14 @@ function AccountSignIn(props) {
         try {
             const res = await fetch(endpoint, requestOptions)
             const response = await res.json()
-            handleLogin(response.loggedIn, response.user)
-            if(!response.loggenIn){
-                setStatus(response.message)
-            }
-            else{
-                setStatus('')
-            }
+            console.log(response)
+            // handleLogin(response.loggedIn, response.user)
+            // if(!response.loggenIn){
+            //     setStatus(response.message)
+            // }
+            // else{
+            //     setStatus('')
+            // }
         }
 
         catch (e) {
