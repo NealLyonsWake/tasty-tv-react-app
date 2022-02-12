@@ -44,42 +44,53 @@ function AccountSignIn(props) {
         try {
             const res = await fetch(endpoint, requestOptions)
             const response = await res.json()
-            console.log(response)
+            // console.log(response)
+
+
 
             const cookies = new Cookies()
-            cookies.set('token', response.token,{
+            cookies
+            .set('token', response.token, {
                 httpOnly: true,
-                        path: '/',
-                        secure: true,
-                        sameSite: "none",
-                        expires: new Date(new Date().getTime() + 20 * 1000)
+                path: '/',
+                secure: true,
+                sameSite: "none",
+                expires: new Date(new Date().getTime() + 30 * 1000)
+            })
+            .set('user', response.token, {
+                httpOnly: true,
+                path: '/',
+                secure: true,
+                sameSite: "none",
+                expires: new Date(new Date().getTime() + 30 * 1000)
             })
 
-            console.log(cookies)
+            console.log(cookies.token)
+            console.log(cookies.user)
 
 
-        //              const serialisedToken = serialize('token', response.token,
-        //       {
-        //         httpOnly: true,
-        //         path: '/',
-        //         secure: true,
-        //         sameSite: "lax",
-        //         expires: new Date(new Date().getTime() + 60 * 60 * 1000)
-        //       })
+            //              const serialisedToken = serialize('token', response.token,
+            //       {
+            //         httpOnly: true,
+            //         path: '/',
+            //         secure: true,
+            //         sameSite: "lax",
+            //         expires: new Date(new Date().getTime() + 60 * 60 * 1000)
+            //       })
 
-        //       const serialisedUser = serialize('user', response.user.username,
-        //       {
-        //         httpOnly: true,
-        //         path: '/',
-        //         secure: true,
-        //         sameSite: "lax",
-        //         expires: new Date(new Date().getTime() + 60 * 60 * 1000)
-        //       })
-          
-        //    let headers = new Headers();
+            //       const serialisedUser = serialize('user', response.user.username,
+            //       {
+            //         httpOnly: true,
+            //         path: '/',
+            //         secure: true,
+            //         sameSite: "lax",
+            //         expires: new Date(new Date().getTime() + 60 * 60 * 1000)
+            //       })
 
-        //    headers.set('Set-Cookie', serialisedToken)
-        //    .set('Set-Cookie', serialisedUser)
+            //    let headers = new Headers();
+
+            //    headers.set('Set-Cookie', serialisedToken)
+            //    .set('Set-Cookie', serialisedUser)
 
 
             // .setHeader('Set-Cookie', serialisedToken)
@@ -125,7 +136,6 @@ function AccountSignIn(props) {
                 </div>
                 <button className="account-button">Sign In</button>
 
-                {/* <input type="submit" value="Sign In" /> */}
             </form>
 
             <h4>Not registered?, <a href="/register" onClick={subHeadingChange} name="Sign up to enjoy!">Sign up</a></h4>
