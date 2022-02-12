@@ -49,15 +49,14 @@ function AccountSignIn(props) {
 
 
             const cookies = new Cookies()
-            cookies
-            .set('token', response.token, {
+            cookies.set('token', response.token, {
                 httpOnly: true,
                 path: '/',
                 secure: true,
                 sameSite: "none",
                 expires: new Date(new Date().getTime() + 30 * 1000)
             })
-            .set('user', response.token, {
+            cookies.set('user', response.token, {
                 httpOnly: true,
                 path: '/',
                 secure: true,
@@ -65,8 +64,8 @@ function AccountSignIn(props) {
                 expires: new Date(new Date().getTime() + 30 * 1000)
             })
 
-            console.log(cookies.token)
-            console.log(cookies.user)
+            console.log(cookies)
+           
 
 
             //              const serialisedToken = serialize('token', response.token,
