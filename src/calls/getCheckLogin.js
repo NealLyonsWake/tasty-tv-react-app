@@ -13,6 +13,7 @@ const checkLogin = async () => {
             // setLoggedIn(response.loggedIn)
 
             const cookie = new Cookies()
+            console.log(cookie, "Cookies")
 
 
             if (cookie.token) {
