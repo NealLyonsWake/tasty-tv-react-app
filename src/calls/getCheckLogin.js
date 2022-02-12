@@ -12,7 +12,7 @@ const checkLogin = async () => {
         // const response = await res.json()
             // setLoggedIn(response.loggedIn)
 
-            const cookie = Cookies()
+            const cookie = new Cookies()
 
 
             if (cookie.token) {
