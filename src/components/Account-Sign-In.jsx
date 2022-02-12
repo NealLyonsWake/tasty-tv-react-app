@@ -70,8 +70,10 @@ function AccountSignIn(props) {
                 console.log(cookies)
            
                 setStatus('')
+
+                handleLogin(response.token ? true : false, response.user.username)
             }
-            handleLogin(response.token ? true : false, response.user.username)
+            
         }
 
         catch (e) {
