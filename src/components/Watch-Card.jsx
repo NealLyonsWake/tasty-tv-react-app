@@ -23,7 +23,9 @@ function WatchCard(props) {
                 credentials: 'include',
                 headers: {
                     Accept: '*/*',
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    Cookie: 'token',
+                    Cookie: 'user'
                 },
                 body: JSON.stringify({
                     watched: props.watched,
@@ -95,7 +97,8 @@ function WatchCard(props) {
                     credentials: 'include',
                     headers: {
                         Accept: '*/*',
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                      
                     },
                     body: JSON.stringify({
                         author: props.user,
