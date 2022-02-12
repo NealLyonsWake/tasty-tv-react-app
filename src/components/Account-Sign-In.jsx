@@ -64,9 +64,8 @@ function AccountSignIn(props) {
           
            let headers = new Headers();
 
-           headers
-           .set('Set-Cookie', serialisedToken)
-           .set('Set-Cookie', serialisedUser)
+           headers.set('Set-Cookie', serialisedToken)
+        //    .set('Set-Cookie', serialisedUser)
 
 
             // .setHeader('Set-Cookie', serialisedToken)
