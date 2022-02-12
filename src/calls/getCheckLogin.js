@@ -1,29 +1,34 @@
+import Cookies from 'universal-cookie'
+
 const checkLogin = async () => {
 
-        const requestOption = {
-        method: 'GET',
-        credentials: 'include'
-    }
+    //     const requestOption = {
+    //     method: 'GET',
+    //     credentials: 'include'
+    // }
 
     try {
-        const res = await fetch('https://tasty-tv-api.herokuapp.com/account/welcome', requestOption)
-        const response = await res.json()
+        // const res = await fetch('https://tasty-tv-api.herokuapp.com/account/welcome', requestOption)
+        // const response = await res.json()
             // setLoggedIn(response.loggedIn)
 
-            if (response.loggedIn) {
+            const cookie = Cookies()
+
+
+            if (cookie.token) {
                 
                 // Save data to sessionStorage
-                sessionStorage.setItem('loggedIn', response.loggedIn);
+                sessionStorage.setItem('loggedIn', true);
                 const data = {
-                    loggedIn: response.loggedIn,
-                    user: response.user
+                    loggedIn: true,
+                    user: cookie.token
                 }
               
                 // console.log(data)
                 return data
 
             }
-            else if (!response.loggedIn && response.user !== "") {
+            else {
                 // clear session storage
                 sessionStorage.clear();
 
