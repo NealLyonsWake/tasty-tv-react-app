@@ -61,9 +61,10 @@ function TopScreen() {
         setPostedReviews(editComment);
     }
 
-    function handleLogin(loggedIn, user) {
+    function handleLogin(loggedIn, user, token) {
         setLoggedIn(loggedIn)
         setUser(user)
+        checkLogin(token, user)
     }
 
     // Managing watch list movies (toggle watched)

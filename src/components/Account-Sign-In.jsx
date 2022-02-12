@@ -15,8 +15,8 @@ function AccountSignIn(props) {
         e.preventDefault()
     }
 
-    function handleLogin(loggedIn, user) {
-        props.handleLogin(loggedIn, user)
+    function handleLogin(loggedIn, user, token) {
+        props.handleLogin(loggedIn, user, token)
     }
 
     const resetCredentials = () => {
@@ -71,7 +71,7 @@ function AccountSignIn(props) {
            
                 setStatus('')
 
-                handleLogin(response.token ? true : false, response.user.username)
+                handleLogin(response.token ? true : false, response.user.username, response.token)
             }
             
         }

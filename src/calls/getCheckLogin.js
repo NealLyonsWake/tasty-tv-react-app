@@ -1,6 +1,6 @@
 import Cookies from 'universal-cookie'
 
-const checkLogin = async () => {
+const checkLogin = async (token, user) => {
 
     //     const requestOption = {
     //     method: 'GET',
@@ -12,11 +12,28 @@ const checkLogin = async () => {
         // const response = await res.json()
             // setLoggedIn(response.loggedIn)
 
-            const cookie = new Cookies()
-            console.log(cookie, "Cookies")
+                       
+            const cookies = new Cookies()
+                cookies.set('token', token, {
+                    httpOnly: true,
+                    path: '/',
+                    secure: true,
+                    sameSite: "none",
+                    expires: new Date(new Date().getTime() + 30 * 1000)
+                })
+                cookies.set('user', user, {
+                    httpOnly: true,
+                    path: '/',
+                    secure: true,
+                    sameSite: "none",
+                    expires: new Date(new Date().getTime() + 30 * 1000)
+                })
+
+                console.log(cookies)
 
 
-            if (cookie.token) {
+
+            if (cookies.token) {
                 
                 // Save data to sessionStorage
                 sessionStorage.setItem('loggedIn', true);
