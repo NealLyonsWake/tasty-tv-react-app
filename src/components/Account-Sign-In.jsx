@@ -62,7 +62,7 @@ function AccountSignIn(props) {
                     sameSite: "none",
                     expires: new Date(new Date().getTime() + 30 * 1000)
                 })
-                cookies.set('user', response.username, {
+                cookies.set('user', response.user, {
                     // httpOnly: true,
                     path: '/',
                     secure: true,
