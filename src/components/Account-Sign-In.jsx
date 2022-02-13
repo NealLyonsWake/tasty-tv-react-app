@@ -44,7 +44,7 @@ function AccountSignIn(props) {
         try {
             const res = await fetch(endpoint, requestOptions)
             const response = await res.json()
-            // console.log(response)
+            console.log(response)
 
 
             if (!response.token) {
@@ -71,7 +71,7 @@ function AccountSignIn(props) {
            
                 setStatus('')
 
-                handleLogin(response.token ? true : false, response.user.username, response.token)
+                handleLogin(response.token ? true : false, props.un)
             }
             
         }
