@@ -44,7 +44,7 @@ function AccountSignIn(props) {
         try {
             const res = await fetch(endpoint, requestOptions)
             const response = await res.json()
-            console.log(response)
+            console.log(response, "It's Me!")
 
 
             if (!response.token) {
