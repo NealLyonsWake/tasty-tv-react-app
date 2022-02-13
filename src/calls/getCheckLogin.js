@@ -2,15 +2,15 @@ import Cookies from 'universal-cookie'
 
 const checkLogin = async (token, user) => {
 
-    //     const requestOption = {
-    //     method: 'GET',
-    //     credentials: 'include'
-    // }
+        const requestOption = {
+        method: 'GET',
+        credentials: 'include'
+    }
 
     try {
         const res = await fetch('https://tasty-tv-api.herokuapp.com/account/welcome', requestOption)
         const response = await res.json()
-        setLoggedIn(response.loggedIn)
+        // setLoggedIn(response.loggedIn)
 
 
         // const cookies = new Cookies()
