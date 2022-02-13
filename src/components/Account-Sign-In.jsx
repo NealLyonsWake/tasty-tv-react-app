@@ -59,14 +59,14 @@ function AccountSignIn(props) {
                     // httpOnly: true,
                     path: '/',
                     secure: true,
-                    sameSite: "none",
+                    // sameSite: "none",
                     expires: new Date(new Date().getTime() + 60 * 60 * 1000)
                 })
                 cookies.set('user', response.user, {
                     // httpOnly: true,
                     path: '/',
                     secure: true,
-                    sameSite: "none",
+                    // sameSite: "none",
                     expires: new Date(new Date().getTime() + 60 * 60 * 1000)
                 })
 

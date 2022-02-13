@@ -6,7 +6,9 @@ function AccountProfile(props) {
 
         const requestOption = {
             method: 'GET',
-            credentials: 'include'
+            credentials: 'include',
+            withCredentials: true,
+            mode: 'cors'
           }
 
         try {
