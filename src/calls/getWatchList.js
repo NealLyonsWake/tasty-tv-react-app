@@ -6,7 +6,10 @@ const handleWatchCall = async () => {
         const endpoint = "https://tasty-tv-api.herokuapp.com/watch/requestwatchlist"
         const requestOptions = {
             method: 'GET',
+            mode: 'cors',
             credentials: 'include',
+            withCredentials: true,
+
             headers: {
                 Accept: '*/*',
                 'Content-Type': 'application/json'
