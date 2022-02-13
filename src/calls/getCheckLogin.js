@@ -29,37 +29,30 @@ const checkLogin = async (token, user) => {
             expires: new Date(new Date().getTime() + 60 * 1000)
         })
 
+    
+
         console.log(cookies)
 
-
-
         const cookieCheck = () => {
-
             let data = {}
-
             if (cookies.token) {                
-
                 // Save data to sessionStorage
                 sessionStorage.setItem('loggedIn', true);
                 data = {
                     loggedIn: true,
                     user: cookies.token
                 }
-
                 // console.log(data)
                 return data
-
             }
             else {
                 // clear session storage
                 sessionStorage.clear();
-
                 data = {
                     user: '',
                     watchList: []
                 }
                 // console.log(data)
-
             }
             setTimeout(() => {
                 cookieCheck()
@@ -67,6 +60,7 @@ const checkLogin = async (token, user) => {
             console.log(data)
             return data
         }
+        cookieCheck()
     }
     catch (err) {
         console.log('Error', err)
