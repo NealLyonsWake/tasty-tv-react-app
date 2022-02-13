@@ -56,14 +56,14 @@ function AccountSignIn(props) {
             else {
                 const cookies = new Cookies()
                 cookies.set('token', response.token, {
-                    httpOnly: true,
+                    // httpOnly: true,
                     path: '/',
                     secure: true,
                     sameSite: "none",
                     expires: new Date(new Date().getTime() + 30 * 1000)
                 })
                 cookies.set('user', response.username, {
-                    httpOnly: true,
+                    // httpOnly: true,
                     path: '/',
                     secure: true,
                     sameSite: "none",
