@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import { useLocation, Routes, Route } from "react-router-dom";
 import checkLogin from '../calls/getCheckLogin';
 import handleHeading from '../supportFunctions/handleHeading';
-
+import { useCookies } from 'react-cookie'
 
 function TopScreen() {
     // Set up the top-level states for the front end application.
