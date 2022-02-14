@@ -17,7 +17,7 @@ function TopScreen() {
     const [postedReviews, setPostedReviews] = useState([])
     const [loggedIn, setLoggedIn] = useState(false)
     const [user, setUser] = useState('')
-    const [cookies, setCookie] = useCookies(['token']);
+    const [cookies, setCookie] = useCookies(['token', 'user']);
 
     const location = useLocation()
 
@@ -66,6 +66,11 @@ function TopScreen() {
         setLoggedIn(loggedIn)
         setUser(user)
         setCookie('token', token, {
+            httpOnly: false,
+            secure: true,
+            expires: new Date(new Date().getTime() + 60 * 60 * 1000)
+        });
+        setCookie('user', user, {
             httpOnly: false,
             secure: true,
             expires: new Date(new Date().getTime() + 60 * 60 * 1000)
