@@ -27,7 +27,7 @@ function TopScreen() {
     }, [])
 
     const confirmLogin = async () => {
-        const data = await checkLogin()
+        const data = await checkLogin(cookies)
         if (data.loggedIn) {
             setLoggedIn(data.loggedIn)
             setUser(data.user)

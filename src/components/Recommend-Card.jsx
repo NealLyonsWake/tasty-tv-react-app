@@ -19,7 +19,9 @@ function RecommendedCard(props) {
 
            const requestOptions = {
             method: 'POST',
+            mode: 'cors',
             credentials: 'include',
+            withCredentials: true,
             headers: {
                 Accept: '*/*',
                 'Content-Type': 'application/json'
