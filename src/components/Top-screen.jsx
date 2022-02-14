@@ -18,7 +18,6 @@ function TopScreen() {
     const [loggedIn, setLoggedIn] = useState(false)
     const [user, setUser] = useState('')
     const [cookies, setCookie] = useCookies(['token']);
-    const [cookies, setCookie] = useCookies(['user']);
 
     const location = useLocation()
 
