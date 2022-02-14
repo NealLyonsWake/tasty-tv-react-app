@@ -23,10 +23,8 @@ function WatchCard(props) {
                 credentials: 'include',
                 headers: {
                     Accept: '*/*',
-                    'Content-Type': 'application/json',
-                    Cookie: 'token',
-                    Cookie: 'user'
-                },
+                    'Content-Type': 'application/json'
+                                  },
                 body: JSON.stringify({
                     watched: props.watched,
                 })

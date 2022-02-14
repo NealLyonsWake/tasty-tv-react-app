@@ -1,6 +1,5 @@
 // import Cookies from 'universal-cookie'
 
-import { header } from "express/lib/request"
 
 const checkLogin = async (cookies) => {
 
