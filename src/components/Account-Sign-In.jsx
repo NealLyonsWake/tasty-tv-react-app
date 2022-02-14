@@ -74,7 +74,7 @@ function AccountSignIn(props) {
            
                 setStatus('')
                 
-                handleLogin(response.token ? true : false, props.un)
+                handleLogin(response.token ? true : false, props.un, response.token)
 
             }
             
