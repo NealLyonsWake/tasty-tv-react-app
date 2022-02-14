@@ -1,7 +1,7 @@
 // import Cookies from 'universal-cookie'
 
 
-const checkLogin = async (cookies) => {
+const checkLogin = async () => {
 
     const requestOption = {
         method: 'GET',

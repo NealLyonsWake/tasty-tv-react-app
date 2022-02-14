@@ -68,11 +68,13 @@ function TopScreen() {
         setCookie('token', token, {
             httpOnly: false,
             secure: true,
+            sameSite: "none",
             expires: new Date(new Date().getTime() + 60 * 60 * 1000)
         });
         setCookie('user', user, {
             httpOnly: false,
             secure: true,
+            sameSite: "none",
             expires: new Date(new Date().getTime() + 60 * 60 * 1000)
         });
         checkLogin(token, user)
