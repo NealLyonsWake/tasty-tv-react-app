@@ -66,12 +66,14 @@ function TopScreen() {
         setLoggedIn(loggedIn)
         setUser(user)
         setCookie('token', token, {
+            domain: "tasty-tv-api.herokuapp.com",
             httpOnly: false,
             secure: true,
             sameSite: "none",
             expires: new Date(new Date().getTime() + 60 * 60 * 1000)
         });
         setCookie('user', user, {
+            domain: "tasty-tv-api.herokuapp.com",
             httpOnly: false,
             secure: true,
             sameSite: "none",
