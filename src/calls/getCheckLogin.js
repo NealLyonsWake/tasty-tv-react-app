@@ -3,6 +3,8 @@
 
 const checkLogin = async (cookies) => {
 
+    console.log(cookies)
+    
     const requestOption = {
         method: 'GET',
         credentials: 'include',
