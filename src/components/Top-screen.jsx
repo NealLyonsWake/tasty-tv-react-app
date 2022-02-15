@@ -75,7 +75,7 @@ function TopScreen() {
             sameSite: "none",
             expires: new Date(new Date().getTime() + 60 * 60 * 1000)
         });
-        checkLogin(token, user)
+        checkLogin(cookies)
     }
 
     // Managing watch list movies (toggle watched)

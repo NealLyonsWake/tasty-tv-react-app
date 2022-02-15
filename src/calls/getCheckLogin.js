@@ -1,7 +1,7 @@
 // import Cookies from 'universal-cookie'
 
 
-const checkLogin = async () => {
+const checkLogin = async (cookies) => {
 
     const requestOption = {
         method: 'GET',
@@ -10,7 +10,8 @@ const checkLogin = async () => {
         withCredentials: true,
         headers: {
             Accept: '*/*',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Set-Cookie': cookies.token
         },
     }
 
