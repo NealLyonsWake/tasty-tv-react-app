@@ -60,7 +60,7 @@ async function checkLogin(cookies) {
         // setTimeout(() => {
         //     cookieCheck()
         // }, 1000)
-        console.log(data)
+        // console.log(data)
         return data
     }
     // cookieCheck()
