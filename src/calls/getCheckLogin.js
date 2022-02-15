@@ -1,9 +1,8 @@
-// import Cookies from 'universal-cookie'
+import { useCookies } from 'react-cookie'
 
 
-const checkLogin = async (cookies) => {
-
-    // console.log(cookies)
+async function checkLogin(cookies) {
+    console.log(cookies)
 
     const requestOption = {
         method: 'GET',
@@ -13,7 +12,7 @@ const checkLogin = async (cookies) => {
         headers: {
             Accept: '*/*',
             'Content-Type': 'application/json',
-            'Set-Cookie': cookies.token
+            'Set-Cookie': cookies
         },
     }
 
@@ -21,8 +20,6 @@ const checkLogin = async (cookies) => {
         const res = await fetch('https://tasty-tv-api.herokuapp.com/account/welcome', requestOption)
         const response = await res.json()
         // setLoggedIn(response.loggedIn)
-
-
         // const cookies = new Cookies()
         // cookies.set('token', token, {
         //     httpOnly: true,
@@ -38,15 +35,12 @@ const checkLogin = async (cookies) => {
         //     sameSite: "none",
         //     expires: new Date(new Date().getTime() + 60 * 1000)
         // })
-
-
         // console.log(cookies)
-
         // const cookieCheck = () => {
         let data = {}
         if (response.loggedIn) {
             // Save data to sessionStorage
-            sessionStorage.setItem('loggedIn', true);
+            sessionStorage.setItem('loggedIn', true)
             data = {
                 loggedIn: true,
                 user: response.user
@@ -56,7 +50,7 @@ const checkLogin = async (cookies) => {
         }
         else {
             // clear session storage
-            sessionStorage.clear();
+            sessionStorage.clear()
             data = {
                 user: '',
                 watchList: []
