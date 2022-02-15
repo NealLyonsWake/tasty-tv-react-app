@@ -37,11 +37,11 @@ function TopScreen() {
             setUser(data.user)
             setWatchList(data.watchList)
         }
-        console.log(cookies)
+        // console.log(cookies)
         setTimeout(() => {
             confirmLogin()
         }, 1000)
-        console.log(data)
+        // console.log(data)
     }
 
 
